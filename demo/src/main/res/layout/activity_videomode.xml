@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.google.android.exoplayer.demo.videomode"
+
+    android:background="@drawable/main_header_selector"
+
+    >
+
+
+
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_margin="100dp"
+        >
+
+
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="280dp"
+            android:id="@+id/BtnVOD"
+            android:src="@drawable/videomode_vod"
+            android:scaleType="fitXY"
+            android:layout_weight="1"
+            android:layout_margin="30dp"
+            android:background="@drawable/roundcorner"
+
+            android:contentDescription="asdf"></ImageButton>
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="280dp"
+            android:layout_weight="1"
+            android:id="@+id/BtnLive"
+
+            android:src="@drawable/logo_bright"
+            android:scaleType="fitXY"
+            android:layout_margin="30dp"
+            android:background="@drawable/roundcorner"
+
+            ></ImageButton>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/LinearLayout02"
+        android:layout_centerHorizontal="true"
+        android:text="Choose Video on Demand or Live Streaming" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Video on Demand"
+        android:id="@+id/textView"
+        android:layout_above="@+id/editText"
+        android:layout_alignLeft="@+id/LinearLayout02"
+        android:layout_alignStart="@+id/LinearLayout02"
+        android:layout_marginLeft="90dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginBottom="80dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Live Streaming"
+        android:id="@+id/textView2"
+        android:layout_marginRight="108dp"
+        android:layout_marginEnd="108dp"
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignRight="@+id/LinearLayout02"
+        android:layout_alignEnd="@+id/LinearLayout02" />
+
+
+</RelativeLayout>
