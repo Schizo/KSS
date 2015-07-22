@@ -49,6 +49,9 @@ public class UploadActivity extends Activity {
     private VideoView vidPreview;
     private Button btnUpload;
     long totalSize = 0;
+    public String video_id;
+    public String video_name;
+    public String video_currentTimeMS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,11 @@ public class UploadActivity extends Activity {
 
         // image or video path that is captured in previous activity
         filePath = i.getStringExtra("filePath");
+        video_id = i.getStringExtra("video_id");
+        video_name = i.getStringExtra("video_name");
+        video_currentTimeMS  =  i.getStringExtra("video_currentTimeMS");
+
+        Log.d("StringExtras", video_currentTimeMS + ", " + video_id);
 
 
         //Filename miliseconds of Image
@@ -186,8 +194,11 @@ public class UploadActivity extends Activity {
                 entity.addPart("website",
                         new StringBody("www.androidhive.info"));
                 entity.addPart("email", new StringBody("abc@gmail.com"));
-                Log.d("filenamex", filename);
-                entity.addPart("filename",  new StringBody(filename + ".png"));
+
+                entity.addPart("filename", new StringBody(filename + ".png"));
+                entity.addPart("video_id",  new StringBody(video_id));
+                entity.addPart("video_currentTimeMS",  new StringBody(video_currentTimeMS));
+
 
                 totalSize = entity.getContentLength();
                 httppost.setEntity(entity);

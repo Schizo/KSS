@@ -1,6 +1,7 @@
 package com.google.android.exoplayer.demo.ShotBrowser;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 
 import android.app.Activity;
@@ -42,14 +43,14 @@ public class MainActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v, int pos,long id) {
 				String url = mAdapter.getItem(pos).getLink();
-				//Intent i = new Intent(Intent.ACTION_VIEW);
-				//Intent intent = new Intent(MainActivity.this, DisplayMessageActivity.class);
+				String video_id = mAdapter.getItem(pos).getId();
+				String video_name = mAdapter.getItem(pos).getName();
 				Intent intent = new Intent(MainActivity.this, PlayerActivity.class);
-				String link = "http://192.168.1.3/kss/mp4/" + Uri.parse(url).toString();
+				String link = Uri.parse(url).toString();
+				intent.putExtra("video_id", video_id);
+				intent.putExtra("video_name", video_name);
 				intent.putExtra("link", link);
 				startActivity(intent);
-				//intent.setData();
-				//startActivity(intent);
 
 			}
 
@@ -88,7 +89,11 @@ public class MainActivity extends Activity {
 		protected Void doInBackground(Void... arg0) {
 			//Download the file
 			try {
-				Downloader.DownloadFromUrl("http://schiho.com/kss/csvTest_v001.xml", openFileOutput("StackSites.xml", Context.MODE_PRIVATE));
+				String serverUrl = getResources().getString(R.string.server)  + "db.php?action=shots";
+				Log.d("serverUrl", serverUrl);
+
+				Downloader.DownloadFromUrl(serverUrl , openFileOutput("StackSites.xml", Context.MODE_PRIVATE));
+				//Downloader.DownloadFromUrl("http://schiho.com/kss/csvTest_v001.xml", openFileOutput("StackSites.xml", Context.MODE_PRIVATE));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}

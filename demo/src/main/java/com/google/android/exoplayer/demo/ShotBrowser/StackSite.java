@@ -10,6 +10,8 @@ public class StackSite {
 	private String link;
 	private String about;
 	private String imgUrl;
+	private String annotations = "";
+	private String id;
 	
 	public String getName() {
 		return name;
@@ -35,9 +37,24 @@ public class StackSite {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
+	public String getAnnotations() {
+		return annotations;
+	}
+	public void setAnnotations(String annotations) {
+		this.annotations = annotations;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getId(){return id;}
+
+
+
 	@Override
 	public String toString() {
 		return "StackSite [name=" + name + ", link=" + link + ", about="
-				+ about + ", imgUrl=" + imgUrl + "]";
+				+ about + ", imgUrl=" + imgUrl +  ", annotations=" + annotations + "]";
 	}
+
+
 }

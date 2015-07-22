@@ -31,16 +31,16 @@
             style="@android:style/MediaButton.Previous"
             android:contentDescription="@string/description" />
         
-        <ImageButton android:id="@+id/rew"
-            style="@android:style/MediaButton.Rew"
+        <ImageButton android:id="@+id/previousFrame"
+            style="@android:style/MediaButton.Previous"
             android:contentDescription="@string/description" />
         
         <ImageButton android:id="@+id/pause"
             style="@android:style/MediaButton.Play"
             android:contentDescription="@string/description" />
         
-        <ImageButton android:id="@+id/ffwd"
-            style="@android:style/MediaButton.Ffwd"
+        <ImageButton android:id="@+id/nextFrame"
+            style="@android:style/MediaButton.Next"
             android:contentDescription="@string/description" />
         
         <ImageButton android:id="@+id/next"

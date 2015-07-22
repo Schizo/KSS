@@ -10,15 +10,26 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.content.Context;
+import android.util.Log;
+
+import com.google.android.exoplayer.demo.R;
 
 public class SitesXmlPullParser {
 
+
+	static final String KEY_ID = "id";
 	static final String KEY_SITE = "site";
 	static final String KEY_NAME = "name";
 	static final String KEY_LINK = "link";
-	static final String KEY_ABOUT = "about";
-	static final String KEY_IMAGE_URL = "image";
+	static final String KEY_ABOUT = "description";
+	static final String KEY_IMAGE_URL = "thumbnail";
+	static final String KEY_ANNOTATIONS = "numOfAnnotations";
+	Context ctx;
 
+	SitesXmlPullParser(Context context){
+		ctx = context;
+
+	}
 	public static List<StackSite> getStackSitesFromFile(Context ctx) {
 
 		// List of StackSites that we will return
@@ -65,6 +76,7 @@ public class SitesXmlPullParser {
 					curText = xpp.getText();
 					break;
 
+				//Checks for xml tags like <annotations>
 				case XmlPullParser.END_TAG:
 					if (tagname.equalsIgnoreCase(KEY_SITE)) {
 						// if </site> then we are done with current Site
@@ -75,13 +87,26 @@ public class SitesXmlPullParser {
 						curStackSite.setName(curText);
 					} else if (tagname.equalsIgnoreCase(KEY_LINK)) {
 						// if </link> use setLink() on curSite
-						curStackSite.setLink(curText);
+						String headTail =  ctx.getResources().getString(R.string.server) + ctx.getResources().getString(R.string.pathVideo) + curText;
+						/*Log.d("headTailA", headTail);*/
+						curStackSite.setLink(headTail);
 					} else if (tagname.equalsIgnoreCase(KEY_ABOUT)) {
 						// if </about> use setAbout() on curSite
 						curStackSite.setAbout(curText);
+
 					} else if (tagname.equalsIgnoreCase(KEY_IMAGE_URL)) {
 						// if </image> use setImgUrl() on curSite
-						curStackSite.setImgUrl(curText);
+						String headTail = ctx.getResources().getString(R.string.server) + ctx.getResources().getString(R.string.pathThumbnail) + curText;
+						curStackSite.setImgUrl(headTail);
+						/*Log.d("headTailB", headTail);*/
+					}
+					 else if (tagname.equalsIgnoreCase(KEY_ID)) {
+						assert curStackSite != null;
+						curStackSite.setId(curText);
+					}
+					else if (tagname.equalsIgnoreCase(KEY_ANNOTATIONS)) {
+						assert curStackSite != null;
+						curStackSite.setAnnotations(curText);
 					}
 					break;
 

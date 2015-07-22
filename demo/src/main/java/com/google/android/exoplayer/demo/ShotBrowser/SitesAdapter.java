@@ -71,11 +71,13 @@ public class SitesAdapter extends ArrayAdapter<StackSite> {
 		final ImageView iconImg = (ImageView)row.findViewById(R.id.iconImg);
 		TextView nameTxt = (TextView)row.findViewById(R.id.nameTxt);
 		TextView aboutTxt = (TextView)row.findViewById(R.id.aboutTxt);
+		TextView annotationTxt = (TextView)row.findViewById(R.id.annotationTxt);
 		final ProgressBar indicator = (ProgressBar)row.findViewById(R.id.progress);
 		
 		//Initially we want the progress indicator visible, and the image invisible
 		indicator.setVisibility(View.VISIBLE);
 		iconImg.setVisibility(View.INVISIBLE);
+		annotationTxt.setVisibility(View.VISIBLE);
 
 		//Setup a listener we can use to swtich from the loading indicator to the Image once it's ready
 		ImageLoadingListener listener = new ImageLoadingListener(){
@@ -109,12 +111,23 @@ public class SitesAdapter extends ArrayAdapter<StackSite> {
 		};
 		
 		//Load the image and use our options so caching is handled.
-		imageLoader.displayImage(getItem(pos).getImgUrl(), iconImg,options, listener);
+		imageLoader.displayImage(getItem(pos).getImgUrl(), iconImg, options, listener);
 		
 		//Set the relavent text in our TextViews
 		nameTxt.setText(getItem(pos).getName());
 		aboutTxt.setText(getItem(pos).getAbout());
-		
+
+
+		String numOfAnnotation = getItem(pos).getAnnotations();
+
+
+
+		if(numOfAnnotation.equals("0")){
+			annotationTxt.setVisibility(View.GONE);
+		}
+		else{
+			annotationTxt.setText(numOfAnnotation);
+		}
 		
 		
 		return row;

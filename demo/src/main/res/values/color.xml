@@ -13,6 +13,8 @@
     <color name="blue_grey_600">#546E7A</color>
     <color name="blue_grey_700">#455A64</color>
     <color name="blue_grey_800">#37474F</color>
-    <color name="blue_grey_900">#263238</color>826326
+    <color name="blue_grey_900">#263238</color>
+    <color name="kss_red">#cf0f21</color>
+
 
 </resources>

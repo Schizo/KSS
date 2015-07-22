@@ -42,6 +42,9 @@ public class drawing extends GraphicsActivity
     public Bitmap mBitmap;
     public Bitmap bitmap;
     public String filename;
+    public String video_id;
+    public String video_name;
+    public String video_currentTimeMS;
     private static final int MENU_GROUP_TRACKS = 1;
     private static final int ID_OFFSET = 2;
 
@@ -100,6 +103,10 @@ public class drawing extends GraphicsActivity
         i.putExtra("filePath", linkOnDevice);
         i.putExtra("isImage", isImage);
         i.putExtra("filename", filename);
+        i.putExtra("video_id", video_id);
+        i.putExtra("video_name", video_name);
+        i.putExtra("video_currentTimeMS", video_currentTimeMS);
+
         startActivity(i);
 
     }
@@ -136,7 +143,10 @@ public class drawing extends GraphicsActivity
 
         Bundle extras = getIntent().getExtras();
         String linkOnDisc  = extras.getString("link");
+        video_id = extras.getString("video_id");
+        video_name = extras.getString("video_name");
         filename  = extras.getString("filename");
+        video_currentTimeMS  = extras.getString("video_currentTimeMS");
 
         loadImageFromStorage(linkOnDisc);
 

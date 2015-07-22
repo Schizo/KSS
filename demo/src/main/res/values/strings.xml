@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
   <!-- The user visible name of the application. [CHAR LIMIT=20] -->
-  <string name="application_name">ExoPlayer Demo</string>
+  <string name="application_name">KSS - Yafes Sahin</string>
 
   <string name="enable_background_audio">Play in background</string>
 
@@ -70,6 +70,8 @@
     <string name="title_activity_display_message">DisplayMessageActivity</string>
     <string name="title_activity_loginactivity">loginactivity</string>
     <string name="title_activity_login">login</string>
+  <string name="title_activity_player">Video Player</string>
+
 
     <!-- Google Login -->
     <string name="title_text">KSS - Virtual Production</string>
@@ -92,5 +94,8 @@
 
   <!--  Description for Mediacontroller -->
   <string name="description">Mediacontroller Description</string>
+  <string name="server">http://192.168.1.3/kss/</string>
+  <string name="pathThumbnail">thumbnail/</string>
+  <string name="pathVideo">mp4/</string>
 </resources>
 

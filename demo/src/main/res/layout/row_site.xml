@@ -35,4 +35,16 @@
         android:layout_below="@id/nameTxt"
         />
 
+    <TextView
+        android:id="@+id/annotationTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iconImg"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="#FFFFFFFF"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@+id/progress"
+        android:textStyle="bold" />
+
 </RelativeLayout>
